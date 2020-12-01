@@ -7,30 +7,33 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFf4f4f4),
+      key: _scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.menu,size: 30,),color: AppColors.black, onPressed: (){_scaffoldKey.currentState.openDrawer();}
+        ),
+        title: Text("Seacrch", style: TextStyle(fontSize: 30,color: Color(0xFF4d4d4d),),),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                left: 30,
-                top: 20,
-              ),
-              child:Row(
-                children:<Widget>[
-                  Container(
-                    child: Text(
-                      "Search",
-                      style: TextStyle(fontSize: 30,color: Color(0xFF4d4d4d),),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Container(
               margin: EdgeInsets.only(top: 10, left: 10, right: 40,),
               padding: EdgeInsets.only(top:5, left: 15, bottom: 5),
@@ -242,6 +245,49 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ],
               ),
+            ),
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(  
+          padding:EdgeInsets.all(0),
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xffffe6db),
+              ),
+              accountName: Text("Online Shop", style: TextStyle(color: Colors.black),),
+              accountEmail: Text("onlineshop@gmail.com", style: TextStyle(color: Colors.black),),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Color(0xffff6633),
+                child: Text("ONS",style: TextStyle(fontSize: 25.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home), title: Text("Home", style: TextStyle(color: Colors.black),),
+              onTap: (){
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.search), title: Text("Search",style: TextStyle(color: Colors.black),),
+              onTap: (){
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket), title: Text("CardOrder",style: TextStyle(color: Colors.black),),
+              onTap: (){
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications), title: Text("Notification",style: TextStyle(color: Colors.black),),
+              onTap: (){
+                Navigator.pop(context);
+              },
             ),
           ],
         ),

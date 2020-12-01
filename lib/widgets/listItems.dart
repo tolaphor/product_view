@@ -4,23 +4,35 @@ import 'package:productview/model/data.dart';
 import 'package:productview/screens/detail_screen.dart';
 
 class WidgetListItems extends StatefulWidget {
+  final listDetail;
+  final changeproducts;
+  const WidgetListItems({Key key, this.listDetail, this.changeproducts}) : super(key: key);
   @override
   _WidgetListItemsState createState() => _WidgetListItemsState();
+  
 }
-
 class _WidgetListItemsState extends State<WidgetListItems> {
   @override
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: sneakers.length,
-      itemBuilder: (BuildContext context, int index) {
+      itemBuilder: (BuildContext context, int index){
         return InkWell(
           onTap: () => {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailScreen(),
+                builder: (context) => DetailScreen(listdetail: sneakers[index],),
               ),
             ),
           },
@@ -42,7 +54,10 @@ class _WidgetListItemsState extends State<WidgetListItems> {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    Image.asset("${sneakers[index]['images'][index]}",),
+                    Container(
+                      width: 150, 
+                      child: Image.asset("${widget.changeproducts[index]['images'][index]}", height: 130,)
+                    ),
                     Expanded(
                       child: Container(
                         color: AppColors.white,
@@ -53,18 +68,17 @@ class _WidgetListItemsState extends State<WidgetListItems> {
                         child: Column(
                           children: <Widget>[
                             Title(color: Colors.black, 
-                              child: Text("${sneakers[index]['title']}",
+                              child: Text("${widget.changeproducts[index]['title']}",
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                               ), 
                             ),
                             SizedBox(height: 10,),
-                            Text("${sneakers[index]['subtitle']}",style: TextStyle(color: AppColors.orage),),
+                            Text("${widget.changeproducts[index]['subtitleItems']}",style: TextStyle(color: AppColors.orage),),
                             SizedBox(height: 10,),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text('\$ ', style: TextStyle(color: AppColors.glod),),
-                                Text("${sneakers[index]['price']}",style: TextStyle(color: AppColors.black, fontSize: 15),),
+                                Text("${widget.changeproducts[index]['price']}",style: TextStyle(color: AppColors.black, fontSize: 15),),
                               ],
                             ),
                           ],
@@ -76,8 +90,9 @@ class _WidgetListItemsState extends State<WidgetListItems> {
                 Positioned(
                   top: 0,
                   child: IconButton(
-                    icon: Icon(Icons.favorite), onPressed: (){},
-                    color: AppColors.orage,
+                    icon: Icon(Icons.favorite_border, color: AppColors.grey), 
+                    onPressed: (){
+                    },
                   ),
                 ),
               ],
