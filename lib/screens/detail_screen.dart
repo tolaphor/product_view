@@ -26,6 +26,9 @@ class _DetailScreenState extends State<DetailScreen> {
     @override
     void dispose() {
       super.dispose();
+      blocSize.dispose();
+      blocColor.dispose();
+      blocImages.dispose();
     }
     @override
   Widget build(BuildContext context){
@@ -193,12 +196,12 @@ class _DetailScreenState extends State<DetailScreen> {
                               Text('${widget.listdetail['title']}',
                                 style: TextStyle( fontWeight: FontWeight.bold, fontSize: 25,),
                               ),
-                              Container(
-                                margin: EdgeInsets.all(20),
+                              Expanded(
                                 child: Column(
                                   children: <Widget>[
                                     Text('${widget.listdetail['price']}', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: true == true ? rate : <Widget>[
                                         Icon(Icons.star_border, color: AppColors.glod, size: 20,),
                                       ],
@@ -208,6 +211,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                             ],
                           ),
+                          SizedBox(height: 25),
                           Row(
                             children: [
                               Text("${widget.listdetail['sizetitle']}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),

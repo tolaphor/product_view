@@ -21,6 +21,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   void dispose() {
     super.dispose();
+    itemsSelector.dispose();
   }
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,159 +34,159 @@ class _HomeBodyState extends State<HomeBody> {
           icon: Icon(Icons.menu,size: 30,),color: AppColors.black, onPressed: (){_scaffoldKey.currentState.openDrawer();}
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // Container(
-            //   padding: EdgeInsets.only(
-            //     top: 30,
-            //     left: 20,
-            //     right: 15,
-            //   ),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: <Widget>[
-            //       Container(
-            //         decoration: BoxDecoration(
-            //           color: AppColors.white,
-            //           borderRadius: BorderRadius.circular(15),
-            //         ),
-            //         child: IconButton(
-            //           icon: Icon(Icons.menu), 
-            //           onPressed: (){_scaffoldKey.currentState.openDrawer();}
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            Container(
-              padding: EdgeInsets.only(
-                left: 10,
-                top: 5,
-              ),
-              margin: EdgeInsets.only(bottom:20),
-              child:Column(
-                children:<Widget>[
-                  Container(
-                    padding: EdgeInsets.only(
-                      right: 80,
-                    ),
-                    child: Text(
-                      "Our",
-                      style: TextStyle(fontSize: 30,color: Color(0xFF4d4d4d),),
-                    ),
+      body: StreamBuilder(
+        stream: itemsSelector.selectorStream,
+        builder: (context, snapshot){
+          debugPrint('change ${snapshot.data}');
+          List <Map> products = sneakers;
+          switch (snapshot.data) {
+            case 0:
+              products = sneakers;
+              break;
+            case 1:
+              products = watchs;
+              break;
+            case 2:
+              products = jakets;
+              break;
+          }
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                // Container(
+                //   padding: EdgeInsets.only(
+                //     top: 30,
+                //     left: 20,
+                //     right: 15,
+                //   ),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: <Widget>[
+                //       Container(
+                //         decoration: BoxDecoration(
+                //           color: AppColors.white,
+                //           borderRadius: BorderRadius.circular(15),
+                //         ),
+                //         child: IconButton(
+                //           icon: Icon(Icons.menu), 
+                //           onPressed: (){_scaffoldKey.currentState.openDrawer();}
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    top: 5,
                   ),
-                  Text(
-                    "Products",
-                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-                width: 500,
-                height: 70,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                //scrollDirection: Axis.horizontal,
-                children: true == false ? ListSelector() : <Widget>[
-                  InkWell(
-                    onTap: () => itemsSelector.changeSelectorView(0),
-                    child: Container(
-                      padding: EdgeInsets.all(15),
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                          color: AppColors.lightGrey,
+                  margin: EdgeInsets.only(bottom:20),
+                  child:Column(
+                    children:<Widget>[
+                      Container(
+                        padding: EdgeInsets.only(
+                          right: 80,
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(2),),
-                          Image.asset("assets/images/c.jpeg", width: 20,height: 25,),
-                          Text(" Sneakers", style: TextStyle(color: Colors.black),),
-                        ], 
-                      ), 
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () => itemsSelector.changeSelectorView(1),
-                    child:Container(
-                      padding: EdgeInsets.all(15),
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                          color: AppColors.lightGrey,
+                        child: Text(
+                          "Our",
+                          style: TextStyle(fontSize: 30,color: Color(0xFF4d4d4d),),
                         ),
-                        borderRadius: BorderRadius.circular(10)
                       ),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(2),),
-                          Image.asset("assets/images/d.jpg", width: 20,height: 25,),
-                          Text(" Watchs", style: TextStyle(color: Colors.black),),
-                        ], 
-                      ), 
-                    ),
+                      Text(
+                        "Products",
+                        style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  InkWell(
-                    onTap: () => itemsSelector.changeSelectorView(2),
-                    child:Container(
-                      padding: EdgeInsets.all(15),
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                          color: AppColors.lightGrey,
+                ),
+                //box Detailview
+                // SizedBox( height: 30,),
+                SizedBox(
+                  width: 500,
+                  height: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    //scrollDirection: Axis.horizontal,
+                    children: true == false ? ListSelector() : <Widget>[
+                      InkWell(
+                        onTap: () => itemsSelector.changeSelectorView(0),
+                        child: Container(
+                          padding: EdgeInsets.all(15),
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: snapshot.data == 0 ? AppColors.orage : AppColors.lightGrey,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              Padding(padding: EdgeInsets.all(2),),
+                              Image.asset("assets/images/c.jpeg", width: 20,height: 25,),
+                              Text(" Sneakers", style: TextStyle(color: Colors.black),),
+                            ], 
+                          ), 
                         ),
-                        borderRadius: BorderRadius.circular(10)
                       ),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(2),),
-                          Image.asset("assets/images/h.jpg", width: 20,height: 25,),
-                          Text(" Jakets", style: TextStyle(color: Colors.black),),
-                        ], 
-                      ), 
-                    ),
+                      InkWell(
+                        onTap: () => itemsSelector.changeSelectorView(1),
+                        child:Container(
+                          padding: EdgeInsets.all(15),
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: snapshot.data == 1 ? AppColors.orage : AppColors.lightGrey,
+                            ),
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              Padding(padding: EdgeInsets.all(2),),
+                              Image.asset("assets/images/d.jpg", width: 20,height: 25,),
+                              Text(" Watchs", style: TextStyle(color: Colors.black),),
+                            ], 
+                          ), 
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () => itemsSelector.changeSelectorView(2),
+                        child:Container(
+                          padding: EdgeInsets.all(15),
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: snapshot.data == 2 ? AppColors.orage : AppColors.lightGrey,
+                            ),
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              Padding(padding: EdgeInsets.all(2),),
+                              Image.asset("assets/images/h.jpg", width: 20,height: 25,),
+                              Text(" Jakets", style: TextStyle(color: Colors.black),),
+                            ], 
+                          ), 
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            //box Detailview
-            SizedBox( height: 30,),
-            StreamBuilder(
-              stream: itemsSelector.selectorStream,
-              builder: (context, snapshot){
-                debugPrint('change ${snapshot.data}');
-
-                List <Map> products = sneakers;
-                switch (snapshot.data) {
-                  case 0:
-                    products = sneakers;
-                    break;
-                  case 1:
-                    products = watchs;
-                    break;
-                  case 2:
-                    products = jakets;
-                    break;
-                }
-                return SizedBox(
+                ),
+                SizedBox( height: 30,),
+                SizedBox(
                   width: 500,
                   height: 250,
                   //form class listItems
                   child: WidgetListItems( changeproducts: products),
-                );
-              },
-            ),
-          ],
-        ), 
-      ),
+                ),
+              ],
+            ), 
+          );
+        },
+      ), 
       // drawer page
       drawer: Drawer(
         child: ListView(  

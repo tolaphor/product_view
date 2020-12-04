@@ -16,7 +16,7 @@ List <Map<String, dynamic>> selectors = [
 
 List <Map<String, dynamic>> sneakers = [
   {
-    'title':'Nike Air Max 200 ',
+    'title':'Pedro Max 200 ',
     'subtitleItems':'Tranding New', 
     'sizetitle':'Available Sizes',
     'colortitle':'Color',
@@ -27,7 +27,7 @@ List <Map<String, dynamic>> sneakers = [
     'size':['US 6', 'US 7', 'US 8', 'US 9'],
     'color':['#c07c38', '#4b3ac9', '#e5b832', '#261e06', '#d31fd3'],
     'button':'shopping_card ',
-    'description':'Inspired by the energy flows on Earth as lava flows and the thythm of waver nike Air Max 200 can boast the largest Max...',
+    'description':'Inspired by the energy flows on Earth as lava flows and the thythm of waver nike Air Max 200 can boast the largest Max... Inspired by the energy flows on Earth as lava flows and the thythm of waver nike Air Max 200 can boast the largest Max... Inspired by the energy flows on Earth as lava flows and the thythm of waver nike Air Max 200 can boast the largest Max...',
   },
 
   {
@@ -46,7 +46,7 @@ List <Map<String, dynamic>> sneakers = [
   },
 
   {
-    'title':'Nike Air Max 400 ',
+    'title':'Adidas Air Max 400 ',
     'subtitleItems':'Tranding New', 
     'sizetitle':'Available Sizes',
     'colortitle':'Color',
@@ -66,10 +66,10 @@ List <Map> watchs = [
   {
     'title':'Swith MK MIKE 19 ',
     'subtitleItems':'Trending Now', 
-    'subtitle':'Available Size',
+    'sizetitle':'Available Sizes',
     'colortitle': 'Color',
     'descriptiontitle': 'Description', 
-    'rate':3,
+    'rates':3,
     'images':['assets/images/d.jpg', 'assets/images/e.jpg', 'assets/images/f.jpg', 'assets/images/f.jpg'],
     'price':'\$540.00',
     'size':['US 6', 'US 7', 'US 8', 'US 9'],
@@ -81,10 +81,10 @@ List <Map> watchs = [
   {
     'title':'Swith MK MIKE 20', 
     'subtitleItems':'Trending Now', 
-    'subtitle':'Available Size',
+    'sizetitle':'Available Sizes',
     'colortitle': 'Color',
     'descriptiontitle': 'Description', 
-    'rate':2,
+    'rates':2,
     'images':['assets/images/e.jpg', 'assets/images/e.jpg', 'assets/images/f.jpg', 'assets/images/f.jpg'],
     'price':'\$560.00',
     'size':['US 6', 'US 7', 'US 8', 'US 9'],
@@ -96,10 +96,10 @@ List <Map> watchs = [
   {
     'title':'Swith MK MIKE 21 ', 
     'subtitleItems':'Trending Now', 
-    'subtitle':'Available Size',
+    'sizetitle':'Available Sizes',
     'colortitle': 'Color',
     'descriptiontitle': 'Description', 
-    'rate':5,
+    'rates':5,
     'images':['assets/images/f.jpg', 'assets/images/e.jpg', 'assets/images/f.jpg', 'assets/images/f.jpg'],
     'price':'\$580.00',
     'size':['US 6', 'US 7', 'US 8', 'US 9'],
@@ -114,10 +114,10 @@ List <Map> jakets = [
   {
     'title':'JAKET KT 500', 
     'subtitleItems':'Trending Now', 
-    'subtitle':'Available Size',
+    'sizetitle':'Available Sizes',
     'colortitle': 'Color',
     'descriptiontitle': 'Description', 
-    'rate':7,
+    'rates':7,
     'images':['assets/images/g.jpg', 'assets/images/h.jpg', 'assets/images/i.jpg', 'assets/images/i.jpg'],
     'price':'\$540.00',
     'size':['US 6', 'US 7', 'US 8', 'US 9'],
@@ -129,10 +129,10 @@ List <Map> jakets = [
   {
     'title':'JAKET KT 600', 
     'subtitleItems':'Trending Now', 
-    'subtitle':'Available Size',
+    'sizetitle':'Available Sizes',
     'colortitle': 'Color',
     'descriptiontitle': 'Description', 
-    'rate':4,
+    'rates':4,
     'images':['assets/images/g.jpg', 'assets/images/h.jpg', 'assets/images/i.jpg', 'assets/images/i.jpg'],
     'price':'\$560.00',
     'size':['US 6', 'US 7', 'US 8', 'US 9'],
@@ -144,10 +144,10 @@ List <Map> jakets = [
   {
     'title':'JAKET KT 700', 
     'subtitleItems':'Trending Now', 
-    'subtitle':'Available Size',
+    'sizetitle':'Available Sizes',
     'colortitle': 'Color',
     'descriptiontitle': 'Description', 
-    'rate':1,
+    'rates':1,
     'images':['assets/images/g.jpg', 'assets/images/h.jpg', 'assets/images/i.jpg', 'assets/images/i.jpg'],
     'price':'\$580.00',
     'size':['US 6', 'US 7', 'US 8', 'US 9'],

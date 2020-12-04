@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productview/colors/colors.dart';
-import 'package:productview/model/data.dart';
+import 'package:productview/mybloc/clickblocFavorite.dart';
 import 'package:productview/screens/detail_screen.dart';
 
 class WidgetListItems extends StatefulWidget {
@@ -13,6 +13,7 @@ class WidgetListItems extends StatefulWidget {
 }
 class _WidgetListItemsState extends State<WidgetListItems> {
   @override
+  FavoriteBloc clickfavorite = FavoriteBloc();
   @override
   void initState() {
     super.initState();
@@ -25,14 +26,14 @@ class _WidgetListItemsState extends State<WidgetListItems> {
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: sneakers.length,
+      itemCount: widget.changeproducts.length,
       itemBuilder: (BuildContext context, int index){
         return InkWell(
           onTap: () => {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailScreen(listdetail: sneakers[index],),
+                builder: (context) => DetailScreen(listdetail: widget.changeproducts[index],),
               ),
             ),
           },
