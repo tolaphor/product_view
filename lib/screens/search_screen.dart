@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productview/colors/colors.dart';
+import 'package:productview/model/data.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -17,6 +18,23 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void dispose() {
     super.dispose();
+  }
+
+  Future<List<Map<String, dynamic>>> _searchItems(String value) async {
+    Iterable<Map<String, dynamic>>items = sneakers.where((element) {
+                          if(value == ''){
+                            return false;
+                          }
+                          return (element['title'].toLowerCase()).contains(value.toLowerCase());
+                        });
+
+    return items.toList();
+  }
+ 
+  Future<void> _onSearch(String value) async {
+     List<Map<String, dynamic>> searchItems = await _searchItems(value);
+
+     debugPrint("Items: ${searchItems.length}");
   }
 
   Widget build(BuildContext context) {
@@ -52,6 +70,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         border: InputBorder.none,
                         hintText: "Search Products",
                       ),
+                      onChanged: _onSearch,
                     ),
                   ),
                 ],
@@ -84,168 +103,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top:10,),
-              child: Row(
-                children: <Widget>[
-                  Image.asset('assets/images/c.jpeg',width: 80, height: 60,),
-                  Container(
-
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Nike AIR MAX 200",style: TextStyle(fontSize: 20,),),
-                        Container(
-                          margin: EdgeInsets.only(top: 5,),
-                          child:Column(
-                            children: [
-                              Text("280.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: AppColors.black),),
-                              Text("NEW", style: TextStyle(color: AppColors.glod),),
-                            ],
-                          ),
-                        ), 
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:10,),
-              child: Row(
-                children: <Widget>[
-                  Image.asset('assets/images/c.jpeg',width: 80, height: 60,),
-                  Container(
-
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Nike AIR MAX 200",style: TextStyle(fontSize: 20,),),
-                        Container(
-                          margin: EdgeInsets.only(top: 5,),
-                          child:Column(
-                            children: [
-                              Text("280.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: AppColors.black),),
-                              Text("NEW", style: TextStyle(color: AppColors.glod),),
-                            ],
-                          ),
-                        ), 
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:10,),
-              child: Row(
-                children: <Widget>[
-                  Image.asset('assets/images/c.jpeg',width: 80, height: 60,),
-                  Container(
-
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Nike AIR MAX 200",style: TextStyle(fontSize: 20,),),
-                        Container(
-                          margin: EdgeInsets.only(top: 5,),
-                          child:Column(
-                            children: [
-                              Text("280.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: AppColors.black),),
-                              Text("NEW", style: TextStyle(color: AppColors.glod),),
-                            ],
-                          ),
-                        ), 
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:10,),
-              child: Row(
-                children: <Widget>[
-                  Image.asset('assets/images/c.jpeg',width: 80, height: 60,),
-                  Container(
-
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Nike AIR MAX 200",style: TextStyle(fontSize: 20,),),
-                        Container(
-                          margin: EdgeInsets.only(top: 5,),
-                          child:Column(
-                            children: [
-                              Text("280.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: AppColors.black),),
-                              Text("NEW", style: TextStyle(color: AppColors.glod),),
-                            ],
-                          ),
-                        ), 
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:10,),
-              child: Row(
-                children: <Widget>[
-                  Image.asset('assets/images/c.jpeg',width: 80, height: 60,),
-                  Container(
-
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Nike AIR MAX 200",style: TextStyle(fontSize: 20,),),
-                        Container(
-                          margin: EdgeInsets.only(top: 5,),
-                          child:Column(
-                            children: [
-                              Text("280.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: AppColors.black),),
-                              Text("NEW", style: TextStyle(color: AppColors.glod),),
-                            ],
-                          ),
-                        ), 
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:10,),
-              child: Row(
-                children: <Widget>[
-                  Image.asset('assets/images/c.jpeg',width: 80, height: 60,),
-                  Container(
-
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Nike AIR MAX 200",style: TextStyle(fontSize: 20,),),
-                        Container(
-                          margin: EdgeInsets.only(top: 5,),
-                          child:Column(
-                            children: [
-                              Text("280.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: AppColors.black),),
-                              Text("NEW", style: TextStyle(color: AppColors.glod),),
-                            ],
-                          ),
-                        ), 
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            
           ],
         ),
       ),
